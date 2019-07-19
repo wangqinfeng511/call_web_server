@@ -1,0 +1,38 @@
+获取通话记录：
+	http://127.0.0.1:1148/call_records?scall=源分机号&dcall=目标电话&start_data_time='2019-04-28'&end_data_time='2019-05-29'
+	例子：http://127.0.0.1:1148/call_records?scall=10001&dcall=9015630518848&start_time=2018-04-28&end_time=2019-04-31
+	scall为空搜索所有到目标电话的通话记录
+	dcall为空返回所有源分机的通话记录。
+	返回：
+		[
+ 	   		{
+        		"data_time": "2019-04-29T10:34:08.000",
+        		"dcall": "9015630518848",
+        		"file": "20190429103426-1556505248.3659-10001-9015630518848-Outbound.wav",
+        		"id": 12,
+        		"scall": "10001"
+    			}
+		]
+播放录音文件：
+	http://127.0.0.1:1148/get_file?file_name=20190429111145-1556507483.3676-16601274540-10000-Inbound.wav
+
+用户管理：
+	查询所有用户：http://127.0.0.1:1148/user?user=all
+	返回：
+		[{"user":"admin","id":1,"passwd":"admin","role_id":"1"},......]	
+	查询单用户：http://127.0.0.1:1148/user?user=one?user_id=1 //one表示单用户,user_id用户ID 
+	返回：
+		{"user":"admin","id":1,"passwd":"admin","role_id":"1"}
+	添加用户：http://127.0.0.1:1148/user?action=insert&user=wangqinfeng&passwd=dell.123
+	返回：
+		{"stauts":"OK"}
+	删除用户：http://127.0.0.1:1148/user?action=delete&user_id=5
+	返回：
+		{"status":OK}
+	修改密码：http://127.0.0.1:1148/user?action=update&user_id=6&passwd=wang;
+	返回：
+		{"status":"OK"}
+	设置角色：http://127.0.0.1:1148/user?action=set_role&user_id=6&role_id=1
+		{"status":"OK"}
+角色管理：
+	查询所有角色：http://127.0.0.1:1148/role?role=all;
